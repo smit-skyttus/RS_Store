@@ -11,7 +11,7 @@ import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import AddToCart from "./components/AddToCart";
 
 
-const API = "https://localhost:7252/api/Product/";
+const API = "https://rgp3107.github.io/APIEcon/Data/Products/";
 
 const SingleProduct = () =>{
   const{getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
@@ -31,7 +31,7 @@ const SingleProduct = () =>{
 
   useEffect(()=>{
     window.scrollTo(0,0);
-    getSingleProduct(API + productId);
+    getSingleProduct(API + productId+".json");
   },[])
 
   if (isSingleLoading) {
