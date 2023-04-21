@@ -6,7 +6,7 @@ const AppContext = createContext();
 
 const API = "https://rgp3107.github.io/APIEcon/Data/Products.json";
 
-const CAT_API = "https://localhost:7252/api/Categories";
+const CAT_API = "https://rgp3107.github.io/APIEcon/Data/Categories.json";
 
 const initialState = {
     isLoading : false,
