@@ -18,6 +18,12 @@ const ProductReducer = (state,action) =>{
                 products : action.payload,
                 featureProducts : featureData,
             };
+
+        case "SET_CAT_DATA":
+            return{
+                ...state,
+                all_categories : action.payload,
+            };
         case "API_ERROR":
             return{
                 ...state,

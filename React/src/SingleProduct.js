@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useProductContext } from "./context/productcontext";
 import PageNavigation from "./components/PageNavigation";
@@ -8,14 +8,17 @@ import MyImage from "./components/MyImage";
 import FormatPrice from "./Helpers/FormatPrice";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import AddToCart from "./components/AddToCart";
 
 
-const API = "https://localhost:7252/api/Product/"
+const API = "https://localhost:7252/api/Product/";
 
 const SingleProduct = () =>{
   const{getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
-  console.log(singleProduct);
+  // console.log(singleProduct);
   const{productId} = useParams();
+
+  const location = useLocation();
 
   const{
     productId : alias,
@@ -88,11 +91,12 @@ const SingleProduct = () =>{
               <p>
                 ID : <span> {productId} </span>
               </p>
-              {/* <p>
-                Category :<span> {category.categoryType} </span>
-              </p> */}
+              <p>
+                Category :<span> {location.state.cate} </span>
+              </p>
             </div>
             <hr />
+            <AddToCart product={singleProduct} />
           </div>
 
         </div>

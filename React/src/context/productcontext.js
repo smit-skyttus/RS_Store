@@ -6,6 +6,8 @@ const AppContext = createContext();
 
 const API = "https://localhost:7252/api/Product";
 
+const CAT_API = "https://localhost:7252/api/Categories";
+
 const initialState = {
     isLoading : false,
     isError : false,
@@ -13,6 +15,7 @@ const initialState = {
     featureProducts : [],
     isSingleLoading : false,
     singleProduct : {},
+    all_categories:[]
 };
 
 const AppProvider = ({children}) => {
@@ -30,6 +33,16 @@ const AppProvider = ({children}) => {
        };
     }
 
+    const getCategories = async (url) =>{
+        try {
+          const res = await axios.get(url);
+          const all_categories = await res.data;
+          dispatch({type:"SET_CAT_DATA", payload:all_categories})
+        } catch (error){
+          dispatch ({type:"API_ERROR"});
+        };
+     }
+
     // 2nd API call for single product
 
     const getSingleProduct = async (url)=>{
@@ -45,7 +58,9 @@ const AppProvider = ({children}) => {
 
     useEffect(()=>{
         getProducts(API);
+        getCategories(CAT_API);
     }, []);
+
 
     return (<AppContext.Provider value={{...state, getSingleProduct}}>
         {children}

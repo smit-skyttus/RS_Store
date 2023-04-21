@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const Contact = () => {
+
+  // useEffect(()=>{
+  //   window.scrollTo(0,0);
+  // },[])
   const Wrapper = styled.section`
     padding: 9rem 0 5rem 0;
     text-align: center;
@@ -35,7 +39,7 @@ const Contact = () => {
 
   return <Wrapper>
     <h2 className="common-heading">Contact Page</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.842294851117!2d72.9317594147712!3d20.594496986235274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0c28be349da0b%3A0xd4d1a9e14159ce15!2sSkyttus%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1680066684211!5m2!1sen!2sin" width="100%" height="400" style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+    <iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.842294851117!2d72.9317594147712!3d20.594496986235274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0c28be349da0b%3A0xd4d1a9e14159ce15!2sSkyttus%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1680066684211!5m2!1sen!2sin" width="100%" height="400" style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
     <div className="container">
         <div className="contact-form">

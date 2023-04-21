@@ -1,11 +1,13 @@
-import React from 'react'
+import {React,useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import FormatPrice from '../Helpers/FormatPrice';
 
 const Product = (curElem) => {
     const{productId, productName, productImage,productPrice, category} = curElem;
+
+    const [cat,setCat] = useState(category.categoryType);
   return (
-  <NavLink to={`/singleproduct/${productId}`}>
+  <NavLink to={`/singleproduct/${productId}`} state={{cate:cat}}>
     <div className="card">
         <figure>
             <img src={productImage} alt={productName}></img>
