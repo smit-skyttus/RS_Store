@@ -4,7 +4,7 @@ import reducer from "../reducer/productReducer"
 
 const AppContext = createContext();
 
-const API = "https://localhost:7252/api/Product";
+const API = "https://rgp3107.github.io/APIEcon/Data/Products.json";
 
 const CAT_API = "https://localhost:7252/api/Categories";
 
