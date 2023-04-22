@@ -1,58 +1,71 @@
-import React from 'react';
-import styled from 'styled-components';
-import FormatPrice from '../../Helpers/FormatPrice';
-import { NavLink } from 'react-router-dom';
-import {Button} from '../../styles/Button'
-import { useState } from 'react';
-import ReadMore from '../../Helpers/ReadMore';
+import React from "react";
+import styled from "styled-components";
+import FormatPrice from "../../Helpers/FormatPrice";
+import { NavLink } from "react-router-dom";
+import { Button } from "../../styles/Button";
+import { useState } from "react";
+import ReadMore from "../../Helpers/ReadMore";
 
-const ListView = ({products}) => {
-
+const ListView = ({ products }) => {
   // const{category} = products;
   // const [cat,setCat] = useState(category.categoryType);
+  const [isReadMore, setIsReadMore] = useState(true);
+
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
   return (
-    <Wrapper className='section'>
-      <div className='container grid'>
-        {products.map((curElem)=>{
-          const{productId, productName, productImage, productPrice, productDescription,category} = curElem;
-          return <div className='card grid grid-two-column' key={productId}>
-          <NavLink to= {`/singleproduct/${productId}`} >
-          <figure>
-            <img src={productImage} alt={productName}/>
-          </figure>
-          </NavLink>
+    <Wrapper className="section">
+      <div className="container grid">
+        {products.map((curElem) => {
+          const {
+            productId,
+            productName,
+            productImage,
+            productPrice,
+            productDescription,
+            category,
+          } = curElem;
+          return (
+            <div className="card grid grid-two-column" key={productId}>
+              <NavLink to={`/singleproduct/${productId}`}>
+                <figure>
+                  <img src={productImage} alt={productName} />
+                </figure>
+              </NavLink>
 
-          <div className='card-data'>
-           <NavLink to= {`/singleproduct/${productId}`} >
-            <h3>{productName}</h3>
-            </NavLink>
-            <p>
-              <FormatPrice price={productPrice} />
-            </p>
-           <ReadMore
-           text = {productDescription} />
-            <div className='grid grid-two-column'>
-            <NavLink className='btn-main'>
-              <Button className='btn'>
-                Read More
-              </Button>
-            </NavLink>
-            <NavLink to= {`/singleproduct/${productId}`} state={{cate:category.categoryType}} className='btn-main-cart'>
-              <Button className='btn-cart'>
-                Add to Cart
-              </Button>
-            </NavLink>
+              <div className="card-data">
+                <NavLink to={`/singleproduct/${productId}`}>
+                  <h3>{productName}</h3>
+                </NavLink>
+                <p>
+                  <FormatPrice price={productPrice} />
+                </p>
+                <p>
+                  {isReadMore
+                    ? productDescription.slice(0, 90)
+                    : productDescription}
+                </p>
+                <ReadMore text={productDescription} />
+                <div className="grid grid-two-column">
+                  
+                  <NavLink
+                    to={`/singleproduct/${productId}`}
+                    state={{ cate: category.categoryType }}
+                    className="btn-main-cart"
+                  >
+                    <Button className="btn-cart">Add to Cart</Button>
+                  </NavLink>
+                </div>
+              </div>
             </div>
-          </div>
-
-        </div>
-          
+          );
         })}
-
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   padding: 9rem 0;

@@ -10,7 +10,7 @@ const Cart = () => {
   // console.log(total_price);
 
   window.scrollTo(0,0);
-
+  // console.log(cart);
   if (cart.length === 0) {
     return (
       <EmptyDiv>

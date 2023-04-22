@@ -4,13 +4,12 @@ import reducer from '../reducer/cartReducer';
 const CartContext = createContext();
 
 const getLocalCartData = ()=>{
+    let result= [];
     let localCartData =  localStorage.getItem("RSCart");
-    if (localCartData === []){
-        return [];
+    if (localCartData ){
+        return JSON.parse([localCartData]);
     }
-    else{
-        return JSON.parse(localCartData);
-    }
+    return result;
 }
 
 const initialState = {

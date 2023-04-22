@@ -36,8 +36,9 @@ export const FilterContextProvider = ({ children }) => {
   };
 
   // Sorting Function
-  const sorting = (event) => {
-    let userValue = event.target.value;
+  const sorting = (e) => {
+    let userValue = e.target.value;
+    // console.log(userValue);
     dispatch({ type: "GET_SORT_VALUE", payload: userValue });
   };
 

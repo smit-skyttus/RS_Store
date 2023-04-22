@@ -39,11 +39,14 @@ const FilterSection = () => {
             onChange={updateFilterValue}
           />
         </form>
-        </div>
-        <div className="filter-category">
-          <h3>Category</h3>
-          <div>
-            {categoryOnlyData.map((curElem, index) => {
+      </div>
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {categoryOnlyData.map((curElem, index) => {
+            if (index > 5) {
+              return <></>;
+            } else {
               return (
                 <button
                   key={index}
@@ -55,10 +58,11 @@ const FilterSection = () => {
                   {curElem}
                 </button>
               );
-            })}
-          </div>
+            }
+          })}
+        </div>
       </div>
-      
+
       <div className="filter_price">
         <h3>Price</h3>
         <p>
@@ -75,9 +79,10 @@ const FilterSection = () => {
       </div>
 
       <div className="filter-clear">
-        <Button className="btn" onClick={clearFilters}>Clear Filters</Button>
+        <Button className="btn" onClick={clearFilters}>
+          Clear Filters
+        </Button>
       </div>
-     
     </Wrapper>
   );
 };
