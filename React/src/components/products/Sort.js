@@ -1,33 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useFilterContext } from "../../context/filter_context";
-
+import Select from "react-select";
 
 const Sort = () => {
-  const { filter_products, grid_view, setGridView, setListView, sorting } = useFilterContext();
+  const { filter_products, grid_view, setGridView, setListView, sorting } =
+    useFilterContext();
+  const [isClearable, setIsClearable] = useState(false);
+  const [isSearchable, setIsSearchable] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRtl, setIsRtl] = useState(true);
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    // setSelected(event.target.value);
+  };
+  const options = [
+    { value: "lowest", label: "Price(lowest)" },
+    { value: "highest", label: "Price(highest)" },
+    { value: "a-z", label: "Name(a-z)" },
+    { value: "z-a", label: "Name(z-a)" },
+  ];
   return (
     <Wrapper className="sort-section">
       {/* 1st column  */}
       <div className="sorting-list--grid">
         <button
           className={grid_view ? "active sort-btn" : "sort-btn"}
-          onClick={setGridView}>
+          onClick={setGridView}
+        >
           <BsFillGridFill className="icon" />
         </button>
-        <button  
+        <button
           className={!grid_view ? "active sort-btn" : "sort-btn"}
-          onClick={setListView}>
+          onClick={setListView}
+        >
           <BsList className="icon" />
-        </button>     
+        </button>
       </div>
-        {/* 2nd column  */}
-        <div className="product-data">
+      {/* 2nd column  */}
+      <div className="product-data">
         <p>{`${filter_products.length} Products Available`}</p>
       </div>
 
-       {/* 3rd column  */}
-       <div className="sort-selection">
+      {/* 3rd column  */}
+      <div className="sort-selection">
         <form action="#">
           <label htmlFor="sort"></label>
           <select name="sort" id="sort" className="sort-selection--style"
@@ -42,11 +61,24 @@ const Sort = () => {
             <option value="z-a">Price(z-a)</option>
 
           </select>
-
+          {/* <Select
+            options={options}
+            className="basic-single"
+            classNamePrefix="select"
+            defaultValue={options[0]}
+            isDisabled={isDisabled}
+            isLoading={isLoading}
+            isClearable={isClearable}
+            isRtl={isRtl}
+            isSearchable={isSearchable}
+            name="sort"
+            id="sort"
+            autoFocus={true}
+            onChange={handleChange}
+          /> */}
         </form>
-       
-     </div>
-      </Wrapper>
+      </div>
+    </Wrapper>
   );
 };
 
