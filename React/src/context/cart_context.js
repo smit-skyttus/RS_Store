@@ -35,6 +35,7 @@ const CartProvider = ({children})=>{
     const clearCart =()=>{
         dispatch({type:"CLEAR_CART"})
     };
+    // hs
 
     //increment and decrement of product
     const setDecrease = (id)=>{
