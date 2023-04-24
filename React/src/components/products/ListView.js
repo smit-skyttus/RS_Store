@@ -25,20 +25,26 @@ const ListView = ({ products }) => {
           } = curElem;
           return (
             <div className="card grid grid-two-column" key={productId}>
-              <NavLink to={`/singleproduct/${productId}`} state={{ cate: category.categoryType }}>
+              <NavLink to={`/singleproduct/${productId}`}
+               state={{ cate: category.categoryType }}>
                 <figure>
                   <img src={productImage} alt={productName} />
                 </figure>
               </NavLink>
 
               <div className="card-data">
-                <NavLink to={`/singleproduct/${productId}`}>
+                <NavLink to={`/singleproduct/${productId}`}
+                 state={{ cate: category.categoryType }}>
                   <h3>{productName}</h3>
                 </NavLink>
                 <p>
                   <FormatPrice price={productPrice} />
                 </p>
-                
+                {/* <p>
+                  {isReadMore
+                    ? productDescription.slice(0, 90)
+                    : productDescription}
+                </p> */}
                 <ReadMore text={productDescription} />
                 <div className="grid grid-two-column">
                   
