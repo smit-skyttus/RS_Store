@@ -9,11 +9,7 @@ import ReadMore from "../../Helpers/ReadMore";
 const ListView = ({ products }) => {
   // const{category} = products;
   // const [cat,setCat] = useState(category.categoryType);
-  const [isReadMore, setIsReadMore] = useState(true);
-
-  const toggleReadMore = () => {
-    setIsReadMore(!isReadMore);
-  };
+  
 
   return (
     <Wrapper className="section">
@@ -29,7 +25,7 @@ const ListView = ({ products }) => {
           } = curElem;
           return (
             <div className="card grid grid-two-column" key={productId}>
-              <NavLink to={`/singleproduct/${productId}`}>
+              <NavLink to={`/singleproduct/${productId}`} state={{ cate: category.categoryType }}>
                 <figure>
                   <img src={productImage} alt={productName} />
                 </figure>
@@ -42,11 +38,7 @@ const ListView = ({ products }) => {
                 <p>
                   <FormatPrice price={productPrice} />
                 </p>
-                <p>
-                  {isReadMore
-                    ? productDescription.slice(0, 90)
-                    : productDescription}
-                </p>
+                
                 <ReadMore text={productDescription} />
                 <div className="grid grid-two-column">
                   

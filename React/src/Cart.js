@@ -67,6 +67,9 @@ const Cart = () => {
                 <FormatPrice price={shipping_fee + total_price} />
               </p>
             </div>
+            {/* <div>
+              <img src="./" />
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
@@ -38,6 +38,10 @@ const App = () => {
       tab: "998px",
     },
   };
+  useEffect(()=>{
+    localStorage.setItem("RSCart",[]);
+
+  },[])
   return (
     <ThemeProvider theme={theme}>
     <Router> 
